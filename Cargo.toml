@@ -17,6 +17,12 @@ include = [
     "src/**/*",
 ]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
+
+[features]
+v3_5 = []
+latest = ["v3_5"]
+default = ["latest"]
+
+[package.metadata.docs.rs]
+features = ["latest"]
