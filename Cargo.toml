@@ -18,6 +18,9 @@ include = [
 ]
 
 [dependencies]
+k8s-openapi = { version = "0.20.0", features = ["v1_27"] }
+serde = { version = "1.0.193", features = ["derive"] }
+serde_json = "1.0.108"
 
 [features]
 v3_5 = []
