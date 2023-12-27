@@ -25,14 +25,26 @@ pub use self::artifact_node_spec::ArtifactNodeSpec;
 mod artifact_paths;
 pub use self::artifact_paths::ArtifactPaths;
 
+mod artifact_repository;
+pub use self::artifact_repository::ArtifactRepository;
+
 mod artifact_repository_ref;
 pub use self::artifact_repository_ref::ArtifactRepositoryRef;
+
+mod artifact_repository_ref_status;
+pub use self::artifact_repository_ref_status::ArtifactRepositoryRefStatus;
 
 mod artifactory_artifact;
 pub use self::artifactory_artifact::ArtifactoryArtifact;
 
+mod artifactory_artifact_repository;
+pub use self::artifactory_artifact_repository::ArtifactoryArtifactRepository;
+
 mod azure_artifact;
 pub use self::azure_artifact::AzureArtifact;
+
+mod azure_artifact_repository;
+pub use self::azure_artifact_repository::AzureArtifactRepository;
 
 mod backoff;
 pub use self::backoff::Backoff;
@@ -45,6 +57,9 @@ pub use self::cache::Cache;
 
 mod client_cert_auth;
 pub use self::client_cert_auth::ClientCertAuth;
+
+mod condition;
+pub use self::condition::Condition;
 
 mod container_node;
 pub use self::container_node::ContainerNode;
@@ -85,11 +100,17 @@ pub use self::gauge::Gauge;
 mod gcs_artifact;
 pub use self::gcs_artifact::GCSArtifact;
 
+mod gcs_artifact_repository;
+pub use self::gcs_artifact_repository::GCSArtifactRepository;
+
 mod git_artifact;
 pub use self::git_artifact::GitArtifact;
 
 mod hdfs_artifact;
 pub use self::hdfs_artifact::HDFSArtifact;
+
+mod hdfs_artifact_repository;
+pub use self::hdfs_artifact_repository::HDFSArtifactRepository;
 
 mod header;
 pub use self::header::Header;
@@ -130,6 +151,9 @@ pub use self::manifest_from::ManifestFrom;
 mod memoize;
 pub use self::memoize::Memoize;
 
+mod memoization_status;
+pub use self::memoization_status::MemoizationStatus;
+
 mod metadata;
 pub use self::metadata::Metadata;
 
@@ -142,6 +166,21 @@ pub use self::metrics::Metrics;
 mod mutex;
 pub use self::mutex::Mutex;
 
+mod mutex_holding;
+pub use self::mutex_holding::MutexHolding;
+
+mod mutex_status;
+pub use self::mutex_status::MutexStatus;
+
+mod node_flag;
+pub use self::node_flag::NodeFlag;
+
+mod node_status;
+pub use self::node_status::NodeStatus;
+
+mod node_synchronization_status;
+pub use self::node_synchronization_status::NodeSynchronizationStatus;
+
 mod o_auth2_auth;
 pub use self::o_auth2_auth::OAuth2Auth;
 
@@ -150,6 +189,9 @@ pub use self::o_auth2_endpoint_param::OAuth2EndpointParam;
 
 mod oss_artifact;
 pub use self::oss_artifact::OSSArtifact;
+
+mod oss_artifact_repository;
+pub use self::oss_artifact_repository::OSSArtifactRepository;
 
 mod oss_lifecycle_rule;
 pub use self::oss_lifecycle_rule::OSSLifecycleRule;
@@ -181,14 +223,23 @@ pub use self::retry_strategy::RetryStrategy;
 mod s3_artifact;
 pub use self::s3_artifact::S3Artifact;
 
+mod s3_artifact_repository;
+pub use self::s3_artifact_repository::S3ArtifactRepository;
+
 mod s3_encryption_options;
 pub use self::s3_encryption_options::S3EncryptionOptions;
 
 mod script_template;
 pub use self::script_template::ScriptTemplate;
 
+mod semaphore_holding;
+pub use self::semaphore_holding::SemaphoreHolding;
+
 mod semaphore_ref;
 pub use self::semaphore_ref::SemaphoreRef;
+
+mod semaphore_status;
+pub use self::semaphore_status::SemaphoreStatus;
 
 mod sequence;
 pub use self::sequence::Sequence;
@@ -198,6 +249,9 @@ pub use self::suspend_template::SuspendTemplate;
 
 mod synchronization;
 pub use self::synchronization::Synchronization;
+
+mod synchronization_status;
+pub use self::synchronization_status::SynchronizationStatus;
 
 mod tar_strategy;
 pub use self::tar_strategy::TarStrategy;
