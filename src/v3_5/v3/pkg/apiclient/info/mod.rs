@@ -21,7 +21,7 @@ impl<'a> Client<'a> {
 
         req_builder = req_builder
             .header(reqwest::header::ACCEPT, reqwest::header::HeaderValue::from_static("application/json"))
-            .header("Authorization", self.config.bearer_token().unwrap());
+            .header("Authorization", self.config.bearer_access_token().unwrap());
 
         let req = req_builder.build().unwrap();
         let res = self.config.http_client().execute(req);
