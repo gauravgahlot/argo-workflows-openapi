@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+
 use k8s_openapi::api::core;
 
 /// ArtifactoryArtifact is the location of an artifactory artifact.
