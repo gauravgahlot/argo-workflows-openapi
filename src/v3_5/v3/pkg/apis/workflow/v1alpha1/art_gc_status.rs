@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// ArtGCStatus maintains state related to ArtifactGC.
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ArtGCStatus {
     /// If this is true, we already checked to see if we need to do it and we don't.
     #[serde(rename = "notSpecified", skip_serializing_if = "Option::is_none")]
@@ -14,17 +14,9 @@ pub struct ArtGCStatus {
 
     /// Have Pods been started to perform this strategy?
     /// (enables us not to re-process what we've already done).
-    #[serde(rename = "strategiesProcessed", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "strategiesProcessed",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub strategies_processed: Option<::std::collections::HashMap<String, bool>>,
-}
-
-impl ArtGCStatus {
-    /// ArtGCStatus maintains state related to ArtifactGC.
-    pub fn new() -> ArtGCStatus {
-        ArtGCStatus {
-            not_specified: None,
-            pods_recouped: None,
-            strategies_processed: None,
-        }
-    }
 }
