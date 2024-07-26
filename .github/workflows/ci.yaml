@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 env:
   CARGO_TERM_COLOR: always
@@ -15,23 +15,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup | Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup | Rust
-        uses: ATiltedTree/setup-rust@v1
+        uses: dtolnay/rust-toolchain@stable
         with:
           rust-version: stable
           components: clippy
       - name: Build | Lint
         run: cargo clippy
-    
+
   compile:
     name: Compile
     runs-on: ubuntu-latest
     steps:
       - name: Setup | Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup | Rust
-        uses: ATiltedTree/setup-rust@v1
+        uses: dtolnay/rust-toolchain@stable
         with:
           rust-version: stable
       - name: Build | Compile
@@ -39,15 +39,14 @@ jobs:
 
   test:
     name: Test
-    needs: [ lint, compile ]
+    needs: [lint, compile]
     runs-on: ubuntu-latest
     steps:
       - name: Setup | Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup | Rust
-        uses: ATiltedTree/setup-rust@v1
+        uses: dtolnay/rust-toolchain@stable
         with:
           rust-version: stable
       - name: Build | Test
         run: cargo test
- 
