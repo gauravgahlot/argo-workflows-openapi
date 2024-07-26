@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Artifact indicates an artifact to place at a specified path.
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
 pub struct Artifact {
     #[serde(rename = "archive", skip_serializing_if = "Option::is_none")]
     pub archive: Option<Box<super::ArchiveStrategy>>,
@@ -12,7 +12,7 @@ pub struct Artifact {
 
     #[serde(rename = "artifactGC", skip_serializing_if = "Option::is_none")]
     pub artifact_gc: Option<Box<super::ArtifactGC>>,
-    
+
     #[serde(rename = "artifactory", skip_serializing_if = "Option::is_none")]
     pub artifactory: Option<Box<super::ArtifactoryArtifact>>,
 
@@ -26,7 +26,7 @@ pub struct Artifact {
     /// From allows an artifact to reference an artifact from a previous step.
     #[serde(rename = "from", skip_serializing_if = "Option::is_none")]
     pub from: Option<String>,
-    
+
     /// FromExpression, if defined, is evaluated to specify the value for
     /// the artifact.
     #[serde(rename = "fromExpression", skip_serializing_if = "Option::is_none")]
@@ -38,7 +38,7 @@ pub struct Artifact {
     #[serde(rename = "git", skip_serializing_if = "Option::is_none")]
     pub git: Option<Box<super::GitArtifact>>,
 
-    /// GlobalName exports an output artifact to the global scope, making it 
+    /// GlobalName exports an output artifact to the global scope, making it
     /// available as '{{io.argoproj.workflow.v1alpha1.outputs.artifacts.XXXX}}
     /// and in workflow.status.outputs.artifacts.
     #[serde(rename = "globalName", skip_serializing_if = "Option::is_none")]
@@ -58,14 +58,14 @@ pub struct Artifact {
     /// name of the artifact. must be unique within a template's inputs/outputs.
     #[serde(rename = "name")]
     pub name: String,
-    
+
     /// Make Artifacts optional, if Artifacts doesn't generate or exist
     #[serde(rename = "optional", skip_serializing_if = "Option::is_none")]
     pub optional: Option<bool>,
-    
+
     #[serde(rename = "oss", skip_serializing_if = "Option::is_none")]
     pub oss: Option<Box<super::OSSArtifact>>,
-    
+
     /// Path is the container path to the artifact
     #[serde(rename = "path", skip_serializing_if = "Option::is_none")]
     pub path: Option<String>,
@@ -77,7 +77,7 @@ pub struct Artifact {
     /// if it is a folder.
     #[serde(rename = "recurseMode", skip_serializing_if = "Option::is_none")]
     pub recurse_mode: Option<bool>,
-    
+
     #[serde(rename = "s3", skip_serializing_if = "Option::is_none")]
     pub s3: Option<Box<super::S3Artifact>>,
 
@@ -90,28 +90,8 @@ pub struct Artifact {
 impl Artifact {
     pub fn new(name: String) -> Artifact {
         Artifact {
-            archive: None,
-            archive_logs: None,
-            artifact_gc: None,
-            artifactory: None,
-            azure: None,
-            deleted: None,
-            from: None,
-            from_expression: None,
-            gcs: None,
-            git: None,
-            global_name: None,
-            hdfs: None,
-            http: None,
-            mode: None,
             name,
-            optional: None,
-            oss: None,
-            path: None,
-            raw: None,
-            recurse_mode: None,
-            s3: None,
-            sub_path: None,
+            ..Default::default()
         }
     }
 }

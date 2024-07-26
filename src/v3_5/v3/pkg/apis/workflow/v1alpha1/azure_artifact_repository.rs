@@ -1,5 +1,6 @@
-use serde::{Deserialize, Serialize};
 use k8s_openapi::api::core;
+
+use serde::{Deserialize, Serialize};
 
 /// AzureArtifactRepository defines the controller configuration for an Azure
 /// Blob Storage artifact repository.

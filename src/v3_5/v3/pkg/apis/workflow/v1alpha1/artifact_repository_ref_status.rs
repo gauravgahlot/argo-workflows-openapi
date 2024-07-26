@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
 pub struct ArtifactRepositoryRefStatus {
     #[serde(rename = "artifactRepository", skip_serializing_if = "Option::is_none")]
     pub artifact_repository: Option<Box<super::ArtifactRepository>>,
@@ -8,13 +8,13 @@ pub struct ArtifactRepositoryRefStatus {
     /// The name of the config map. Defaults to \"artifact-repositories\".
     #[serde(rename = "configMap", skip_serializing_if = "Option::is_none")]
     pub config_map: Option<String>,
-    
+
     /// If this ref represents the default artifact repository,
     /// rather than a config map.
     #[serde(rename = "default", skip_serializing_if = "Option::is_none")]
     pub default: Option<bool>,
-    
-    /// The config map key. Defaults to the value of the 
+
+    /// The config map key. Defaults to the value of the
     /// \"workflows.argoproj.io/default-artifact-repository\" annotation.
     #[serde(rename = "key", skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
@@ -23,16 +23,4 @@ pub struct ArtifactRepositoryRefStatus {
     /// or the controller's namespace (if found).
     #[serde(rename = "namespace", skip_serializing_if = "Option::is_none")]
     pub namespace: Option<String>,
-}
-
-impl ArtifactRepositoryRefStatus {
-    pub fn new() -> ArtifactRepositoryRefStatus {
-        ArtifactRepositoryRefStatus {
-            artifact_repository: None,
-            config_map: None,
-            default: None,
-            key: None,
-            namespace: None,
-        }
-    }
 }
