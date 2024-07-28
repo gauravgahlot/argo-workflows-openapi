@@ -12,7 +12,7 @@ argo-workflows-openapi
 
 https://github.com/cubenix/argo-workflows-openapi
 
-Copyright 2023 Cubenix
+Copyright 2023 Gaurav Gahlot
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
